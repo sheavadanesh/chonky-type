@@ -9,13 +9,10 @@ body {
     min-height: 100vh;
     margin: 0;
     background-color: antiquewhite;
-}
-
-body, .quote-input {
     font-family: 'Jua';
 }
 
-.container {
+/* .container {
     background-color: plum;
     padding: 1rem;
     border-radius: 10px;
@@ -52,4 +49,4 @@ body, .quote-input {
 
 .quote-input:focus {
     border-color: white;
-}
+} */
