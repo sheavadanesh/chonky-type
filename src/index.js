@@ -6,6 +6,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const page = document.getElementById('page');
 
     const start = new Start(ctx, canvas);
-    // const game = new Game(page, ctx, canvas, words, input, score);
     console.log('webpack is working');
+
+    
 })

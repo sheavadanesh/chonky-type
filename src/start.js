@@ -4,9 +4,14 @@ class Start {
         this.canvas = canvas;
     }
 
-    drawTitle() {
+    drawStart() {
         this.ctx.beginPath();
-        this.ctx.moveTo()
+            this.ctx.fillStyle = 'red';
+            this.ctx.font = 'bold 30px "Jua"';
+            this.ctx.textAlign = 'center';
+            this.ctx.fillText('Start', (this.canvas.width/2), 300);
+            this.ctx.fill();
+        this.ctx.closePath();
     }
 }
 
