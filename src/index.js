@@ -1,0 +1,11 @@
+import Start from './start';
+
+document.addEventListener('DOMContentLoaded', () => {
+    const canvas = document.getElementById('main-canvas');
+    const ctx = canvas.getContext('2d');
+    const page = document.getElementById('page');
+
+    const start = new Start(ctx, canvas);
+    // const game = new Game(page, ctx, canvas, words, input, score);
+    console.log('webpack is working');
+})
