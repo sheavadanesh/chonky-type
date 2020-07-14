@@ -4,7 +4,7 @@ class Cat {
         this.canvas = canvas;
         this.fat = 0;
         // this.wpm; if you have time.
-        this.fishCount = 0;
+        this.fishEaten = 0;
         this.eat = false;
 
         this.catImg = new Image();
@@ -69,11 +69,11 @@ class Cat {
         };
     }
 
-    drawFishCount() {
+    drawFishEaten() {
         this.ctx.beginPath();
             this.ctx.fillStyle ='black';
             this.ctx.font = 'bold 18px "Jua"';
-            this.ctx.fillText("Fish eaten: " + this.fishCount.toString(), this.canvas.width - 210, 50);
+            this.ctx.fillText("Fish eaten: " + this.fishEaten.toString(), this.canvas.width - 210, 50);
             this.ctx.fill();
         this.ctx.closePath();
     }

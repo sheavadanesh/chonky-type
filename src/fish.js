@@ -1,39 +1,35 @@
 class Fish {
-    constructor(ctx, canvas, word, pos, color) {
+    constructor(ctx, canvas, word, x, y, color) {
         this.ctx = ctx;
         this.canvas = canvas;
-        this.pos = pos;
-        this.word = word
+        this.x = x;
+        this.y = y;
+        this.word = word;
         this.color = color;
+
         this.orangeFishImg = new Image();
         this.grayFishImg = new Image();
-        this.orangeFishImg.src = './public/images/orange_fish.png';
-        this.grayFishImg.src = './public/images/gray_fish.png';
-
-        const x = this.pos[0];
-        const y = this.pos[1];
+        this.orangeFishImg.src = '../public/images/orange_fish.png';
+        this.grayFishImg.src = '../public/images/gray_fish.png';
     }
 
     draw() {
-        if (this.color === 'orange') {
-            this.ctx.drawImage(this.orangeFishImg, x, y, 50, 30);
-        } else {
-            this.ctx.drawImage(this.grayFishImg, x, y, 50, 30);
-        }
-    }
-
-    drawWord() {
         this.ctx.beginPath();
-            this.ctx.font = '15px "Jua"'
-            this.ctx.fillText(this.word, x, y);
+            if (this.color === 'orange') {
+                this.ctx.drawImage(this.orangeFishImg, this.x, this.y, 60, 50);
+            } else {
+                this.ctx.drawImage(this.grayFishImg, this.x, this.y, 60, 50);
+            }
+            this.ctx.fillStyle = 'black';
+            this.ctx.font = '16px "Jua"';
+            this.ctx.margin = '15px';
+            this.ctx.padding = '30px';
+            this.ctx.textBaseline = 'middle';
+            this.ctx.fillText((`        ${this.word}`), this.x + 20, this.y + 7);
             this.ctx.fill();
         this.ctx.closePath();
     }
 
-    move() {
-        x += 1;
-        y += 1;
-    }
 }
 
 export default Fish;

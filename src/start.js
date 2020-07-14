@@ -2,9 +2,8 @@ class Start {
     constructor(ctx, canvas) {
         this.ctx = ctx;
         this.canvas = canvas;
-        this.dancingCat = new Image();
-        this.dancingCat.src = './public/images/dancingCat.gif';
-        
+        this.catImg = new Image();
+        this.catImg.src = '../public/images/cat.png';
     }
 
     drawStart() {
@@ -36,15 +35,13 @@ class Start {
             this.ctx.textAlign = 'center';
             this.ctx.fillText('Try to get the cat as fat and as chonky as you can!',
                                 (this.canvas.width/2), 
-                                200);
+                                180);
             this.ctx.fill();
         this.ctx.closePath();
     }
 
-    drawCatGif() {
-        let catGif = new GIF();
-        catGif.load('/public/images/dancingCat.gif');
-        this.ctx.drawImage(catGif, 250, 250, 100, 100);
+    drawCat() {
+        this.catImg.onload = () => this.ctx.drawImage(this.catImg, 220, 225, 360, 250);
     }
 }
 
