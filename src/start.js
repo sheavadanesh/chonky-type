@@ -19,7 +19,8 @@ class Start {
             this.ctx.fillStyle = 'black';
             this.ctx.font = 'bold 50px "Jua"';
             this.textAlign = 'center';
-            this.ctx.fillText('Chonky Type!', (this.canvas.width/2), 100);
+            this.justifyContent = 'center';
+            this.ctx.fillText('Chonky Type!', 256, 100);
             this.ctx.fill();
         this.ctx.closePath();
         
