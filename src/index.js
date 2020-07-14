@@ -10,4 +10,18 @@ document.addEventListener('DOMContentLoaded', () => {
     
     start.drawTitle();
     start.drawHeaderMessage();
+
+    let count = 0;
+    function flashyTitle() {
+        ctx.clearRect(300, 400, canvas.width, canvas.height);
+        count ++;
+        if (count % 2 == 1) {
+            start.drawStart();
+        } else {
+            null;
+        }
+        if (count == 1000) clearInterval(timer);
+    }
+    window.startInterval = setInterval(flashyTitle, 900);
+
 })
