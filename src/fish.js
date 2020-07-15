@@ -30,6 +30,10 @@ class Fish {
         this.ctx.closePath();
     }
 
+    animateMovement() {
+        this.x += 1;
+    }
+
 }
 
 export default Fish;

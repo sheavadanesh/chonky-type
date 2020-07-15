@@ -71,7 +71,8 @@ class Game {
     }
 
     addFish() {
-        this.populateFishArray();
+        let put = setInterval(this.populateFishArray(), 2000);
+        // this.populateFishArray();
         let count = 0;
         let x = 100;
         let i = 0;
@@ -82,7 +83,7 @@ class Game {
                 that.ctx.clearRect(f.x, f.y, 80, 70);
                 count++;
                 x+=1;
-                f.x += 1;
+                f.x+=1;
                 f.draw();
             }
             window.startInterval = setInterval(movePiece, 40)
@@ -165,6 +166,30 @@ class Game {
             cancelAnimationFrame(req);
             this.gameOver();
         }
+    }
+
+    gameOver() {
+        this.canvas.removeEventListener('click', this.input.focus());
+        this.input.removeEventListener('keydown', this.handleFish);
+        this.input.removeEventListener('input', this.startTimer);
+        this.input.value = '';
+        this.input.disabled = true;
+        this.input.style.display = 'none';
+
+        if (this.cat.fat >= 20) {
+            this.GameOver.endCounter
+            this.canvas.className = 'game-over-canvas';
+            window.overInterval = setInterval(this.gameOverAnimate, 100);
+        }
+    }
+
+    gameOverAnimate() {
+        this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
+        this.drawBackground();
+        this.GameOver.draw20Win();
+        this.GameOver.drawWinMessage();
+        this.GameOver.drawFishEaten(this.cat.fishEaten);
+        this.GameOver.drawPlayAgain();
     }
 
 }
