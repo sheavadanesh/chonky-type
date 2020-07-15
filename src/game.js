@@ -88,16 +88,17 @@ class Game {
                     this.cat.eat = true;
                     this.cat.fishEaten += 1;
                     f.word = null;
-                    break;
+                    // break;
                 };
             });
             this.input.value = '';
+            this.typeStart = 0;
         }
     }
 
-    // handleOverlap() {
-
-    // }
+    handleOverlap() {
+        
+    }
 
 }
 
