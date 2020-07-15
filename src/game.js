@@ -21,7 +21,7 @@ class Game {
         this.inputTimer = 0;
         this.typeStart = 0;
         this.typeEnd = 0;
-        this.date = Date.now();
+        this.then = Date.now();
 
         this.resetGame = this.resetGame.bind(this);
         this.startTimer = this.startTimer.bind(this);
@@ -43,8 +43,8 @@ class Game {
 
     resetGame() {
         this.fish = [];
-        this.fishCount = 0;
         this.cat.fishEaten = 0;
+        this.fishCount = 0;
         this.count = 0;
         this.fat = 0;
         this.cat.eat = false;
@@ -128,6 +128,43 @@ class Game {
         this.input.addEventListener('keydown', this.handleFish);
         this.input.addEventListener('input', this.startTimer);
         //  continue on this
+        let fps = 12;
+        let interval = 1000/fps;
+        let now = Date.now();
+        let delta = now - this.then;
+
+        setInterval(() => {
+            this.count += 10
+        }, 5);
+
+        if (this.fishEaten === 10) {
+            this.fat += 5;
+        }
+
+        this.addFish();
+        this.cat.drawFishEaten();
+
+        this.fish.forEach(f => {
+            f.draw();
+            if (delta > interval) {
+                this.then = now - (delta % interval);
+                f.animateMovement();
+            }
+            // this.handleOverlap(f, indexOfF)
+
+        })
+
+        if (this.cat.fat < 20) {
+            this.cat.drawFishCount();
+            this.cat.draw();
+        } else if (this.cat.fat >= 20) {
+            this.cat.eat = false;
+            this.cat.drawFishCount();
+            this.cat.draw();
+            clearInterval(window.intervalId);
+            cancelAnimationFrame(req);
+            this.gameOver();
+        }
     }
 
 }
