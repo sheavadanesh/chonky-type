@@ -30,6 +30,7 @@ class Game {
         this.handleFish = this.handleFish.bind(this);
         this.startGame = this.startGame.bind(this);
         this.drawBackground = this.drawBackground.bind(this);
+        this.render = this.render.bind(this);
 
     }
 
@@ -128,7 +129,7 @@ class Game {
         this.canvas.addEventListener('click', this.input.focus());
         this.input.addEventListener('keydown', this.handleFish);
         this.input.addEventListener('input', this.startTimer);
-        //  continue on this
+
         let fps = 12;
         let interval = 1000/fps;
         let now = Date.now();
