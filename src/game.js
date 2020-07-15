@@ -28,6 +28,7 @@ class Game {
         this.populateFishArray = this.populateFishArray.bind(this);
         this.addFish = this.addFish.bind(this);
         this.handleFish = this.handleFish.bind(this);
+        this.startGame = this.startGame.bind(this);
 
     }
 
@@ -96,8 +97,28 @@ class Game {
         }
     }
 
-    handleOverlap() {
-        
+    startGame(e) {
+        if (e.button === 0) {
+            this.canvas.removeEventListener('click', this.startGame);
+            this.resetGame();
+            clearInterval(window.startInterval);
+            clearInterval(window.overInterval);
+            this.canvas.className = 'game';
+            requestAnimationFrame(this.render);
+            this.input.disabled = false;
+            this.input.style.display = 'block';
+            this.input.focus();
+        }
+    }
+
+    render() {
+        let req = requestAnimationFrame(this.render);
+
+        this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
+        this.canvas.addEventListener('click', this.input.focus());
+        this.input.addEventListener('keydown', this.handleFish);
+        this.input.addEventListener('input', this.startTimer);
+        //  continue on this
     }
 
 }

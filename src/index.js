@@ -26,5 +26,6 @@ document.addEventListener('DOMContentLoaded', () => {
         canvas.addEventListener('click', game.startGame)
         if (count === 1000) clearInterval(timer);
     }
+    input.style.display = 'none';
     window.startInterval = setInterval(flashyText, 900);
 })
