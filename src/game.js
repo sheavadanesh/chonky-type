@@ -14,7 +14,7 @@ class Game {
         this.dictionary = new Dictionary();
         this.gameOver = new GameOver(ctx, canvas);
         
-        this.fish = []; // array of fishes
+        this.fish = [];
         this.fishCount = 0;
         this.count = 0;
         this.fat = 0;
@@ -27,6 +27,7 @@ class Game {
         this.startTimer = this.startTimer.bind(this);
         this.populateFishArray = this.populateFishArray.bind(this);
         this.addFish = this.addFish.bind(this);
+        this.handleFish = this.handleFish.bind(this);
 
     }
 
@@ -55,6 +56,7 @@ class Game {
             let word = this.dictionary.randomWord();
             let newFish = new Fish(this.ctx, this.canvas, word, x, y, color);
             this.fish.push(newFish);
+            this.fishCount += 1;
         }
     }
 
@@ -77,6 +79,25 @@ class Game {
         }
 
     }
+
+    handleFish() {
+        if (e.keyCode === 32) {
+            let typedVal = this.input.value.trim();
+            this.fish.forEach( f => {
+                if (typedVal === f.word) {
+                    this.cat.eat = true;
+                    this.cat.fishEaten += 1;
+                    f.word = null;
+                    break;
+                };
+            });
+            this.input.value = '';
+        }
+    }
+
+    // handleOverlap() {
+
+    // }
 
 }
 
