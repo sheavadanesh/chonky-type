@@ -29,7 +29,16 @@ class Game {
         this.addFish = this.addFish.bind(this);
         this.handleFish = this.handleFish.bind(this);
         this.startGame = this.startGame.bind(this);
+        this.drawBackground = this.drawBackground.bind(this);
 
+    }
+
+    drawBackground() {
+        this.ctx.beginPath();
+            this.ctx.rect(0, 0, canvas.width, canvas.height);
+            this.ctx.fillStyle = '#767676';
+            this.ctx.fill();
+        this.ctx.closePath();
     }
 
     resetGame() {
