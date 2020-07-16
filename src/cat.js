@@ -3,7 +3,6 @@ class Cat {
         this.ctx = ctx;
         this.canvas = canvas;
         this.fat = 0;
-        // this.wpm; if you have time.
         this.fishEaten = 0;
         this.eat = false;
 
@@ -73,7 +72,7 @@ class Cat {
         this.ctx.beginPath();
             this.ctx.fillStyle ='black';
             this.ctx.font = 'bold 18px "Jua"';
-            this.ctx.fillText("Fish eaten: " + this.fishEaten.toString(), this.canvas.width - 210, 50);
+            this.ctx.fillText("Fish eaten : " + this.fishEaten.toString(), this.canvas.width - 210, 50);
             this.ctx.fill();
         this.ctx.closePath();
     }

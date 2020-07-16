@@ -18,6 +18,7 @@ class Game {
         this.fishCount = 0;
         this.count = 0;
         this.fat = 0;
+        this.eaten = false;
         this.inputTimer = 0;
         this.typeStart = 0;
         this.typeEnd = 0;
@@ -49,6 +50,7 @@ class Game {
         this.count = 0;
         this.fat = 0;
         this.cat.eat = false;
+        this.eaten = false;
     }
 
     startTimer(e) {
@@ -59,48 +61,51 @@ class Game {
 
     populateFishArray() {
         let i = 0;
-        for (i = 0; i < 5; i++) {
-            let x = 100;
-            let y = Math.floor((Math.random() * 220) + 240);
+        for (i = 0; i < 1; i++) {
+            let x = 20;
+            let y = Math.floor((Math.random() * 220) + 170);
             let colors = ['orange', 'gray'];
             let color = colors[Math.floor(Math.random() * 2)];
             let word = this.dictionary.randomWord();
-            let newFish = new Fish(this.ctx, this.canvas, word, x, y, color);
+            let newFish = new Fish(this.ctx, this.canvas, word, x, y, color, this.eaten);
             this.fish.push(newFish);
             this.fishCount += 1;
         }
+
     }
 
     addFish() {
         let put = setInterval(this.populateFishArray(), 2000);
-        // this.populateFishArray();
         let count = 0;
-        let x = 100;
+        let x = 10;
         let i = 0;
         const that = this;
-        for (i = 0; i < 5; i++) {
+        for (i = 0; i < 2; i++) {
             let f = that.fish[i];
             function movePiece() {
                 that.ctx.clearRect(f.x, f.y, 80, 70);
                 count++;
-                x+=1;
-                f.x+=1;
-                f.draw();
+                x+=0.5;
+                f.x+=0.5;
+                if (f.x >= 600) {
+                    f.eaten = true;
+                }
             }
-            window.startInterval = setInterval(movePiece, 40)
+            window.startInterval = setInterval(movePiece, 1000);
+            window.clearInterval(movePiece);
         }
 
     }
 
-    handleFish() {
+    handleFish(e) {
         if (e.keyCode === 32) {
             let typedVal = this.input.value.trim();
             this.fish.forEach( f => {
                 if (typedVal === f.word) {
                     this.cat.eat = true;
-                    this.cat.fishEaten += 1;
+                    f.eaten = true;
                     f.word = null;
-                    // break;
+                    this.cat.fishEaten += 1;
                 };
             });
             this.input.value = '';
@@ -114,7 +119,7 @@ class Game {
             this.resetGame();
             clearInterval(window.startInterval);
             clearInterval(window.overInterval);
-            this.canvas.className = 'game';
+            // this.canvas.className = 'game';
             requestAnimationFrame(this.render);
             this.input.disabled = false;
             this.input.style.display = 'block';
@@ -130,38 +135,41 @@ class Game {
         this.input.addEventListener('keydown', this.handleFish);
         this.input.addEventListener('input', this.startTimer);
 
-        let fps = 12;
+        let fps = 16;
         let interval = 1000/fps;
         let now = Date.now();
         let delta = now - this.then;
 
-        setInterval(() => {
-            this.count += 10
-        }, 5);
+        // setInterval(() => {
+        //     this.count += 1
+        // }, 1000);
 
         if (this.fishEaten === 10) {
             this.fat += 5;
         }
 
-        this.addFish();
+        setInterval(() => {
+            this.addFish()
+        }, 1000);
+
         this.cat.drawFishEaten();
 
         this.fish.forEach(f => {
-            f.draw();
-            if (delta > interval) {
-                this.then = now - (delta % interval);
-                f.animateMovement();
+            if (f.eaten === false) {
+                f.draw();
+                if (delta > interval) {
+                    this.then = now - (delta % interval);
+                    f.move();
+                }
             }
-            // this.handleOverlap(f, indexOfF)
-
         })
 
         if (this.cat.fat < 20) {
-            this.cat.drawFishCount();
+            this.cat.drawFishEaten();
             this.cat.draw();
         } else if (this.cat.fat >= 20) {
             this.cat.eat = false;
-            this.cat.drawFishCount();
+            this.cat.drawFishEaten();
             this.cat.draw();
             clearInterval(window.intervalId);
             cancelAnimationFrame(req);

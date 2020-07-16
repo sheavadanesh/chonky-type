@@ -1,11 +1,12 @@
 class Fish {
-    constructor(ctx, canvas, word, x, y, color) {
+    constructor(ctx, canvas, word, x, y, color, eaten) {
         this.ctx = ctx;
         this.canvas = canvas;
         this.x = x;
         this.y = y;
         this.word = word;
         this.color = color;
+        this.eaten = eaten;
 
         this.orangeFishImg = new Image();
         this.grayFishImg = new Image();
@@ -30,7 +31,7 @@ class Fish {
         this.ctx.closePath();
     }
 
-    animateMovement() {
+    move() {
         this.x += 1;
     }
 
