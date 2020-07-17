@@ -32,7 +32,7 @@ class Fish {
     }
 
     move() {
-        this.x += 0.5;
+        this.x += 0.2;
     }
 
 }

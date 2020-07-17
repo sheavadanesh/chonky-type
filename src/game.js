@@ -31,6 +31,7 @@ class Game {
         this.handleFish = this.handleFish.bind(this);
         this.startGame = this.startGame.bind(this);
         this.render = this.render.bind(this);
+        this.gameLoop = this.gameLoop.bind(this);
         // this.addFishSet = this.addFishSet.bind(this);
 
     }
@@ -52,18 +53,20 @@ class Game {
     // }
 
     populateFishArray() {
-        let x = 20;
+        let x = 12;
         let y = Math.floor((Math.random() * 220) + 170);
         let colors = ['orange', 'gray'];
         let color = colors[Math.floor(Math.random() * 2)];
         let word = this.dictionary.randomWord();
         let newFish = new Fish(this.ctx, this.canvas, word, x, y, color, this.eaten);
-        if (this.fish.length < (this.cat.fat+10)) {
+        let tempFat = this.cat.fat;
+        if (this.fish.length < (tempFat + 12)) {
+            tempFat +=7
             this.fish.push(newFish);
+            // return this.fish;
         }
-        this.fishCount += 1;
+        // this.fish = [];
         return this.fish;
-        
     }
 
     addFish() {
@@ -71,6 +74,7 @@ class Game {
         let now = Date.now();
         let delta = now - this.then;
         
+        // this.fish = [];
         let currentFish = this.populateFishArray();
 
         currentFish.forEach( f => {
@@ -79,7 +83,7 @@ class Game {
                 if (f.eaten === false) {
                     f.draw();
                     f.move();
-                    if (f.x >= 540) {
+                    if (f.x >= 410) {
                         f.eaten = true;
                     }
                 }
@@ -87,39 +91,8 @@ class Game {
         })
     }
 
-    // addFish() {
-    //     // setInterval(this.populateFishArray(), 2000);
-    //     this.populateFishArray();
-    //     let count = 0;
-    //     let x = 10;
-    //     let i = 0;
-    //     const that = this;
-    //     for (i = 0; i < 0; i++) {
-    //         let f = that.fish[i];
-    //         function movePiece() {
-    //             if (f.eaten === false) {
-    //                 that.ctx.clearRect(f.x, f.y, 80, 70);
-    //                 count++;
-    //                 x+=1;
-    //                 f.x+=1;
-    //                 if (f.x >= 600) {
-    //                     f.eaten = true;
-    //                 }
-    //             } else {
-    //                 // var index = that.fish.indexOf(f);
-    //                 // if (index > -1) {
-    //                 //     that.fish.splice(index, 1);
-    //                 // }
-    //             }
-    //         }
-    //         window.startInterval = setInterval(movePiece, 1000);
-    //         window.clearInterval(movePiece);
-    //     }
-
-    // }
-
     handleFish(e) {
-        if (e.keyCode === 32) {
+        if (e.keyCode === 32 || e.keyCode === 13) {
             let typedVal = this.input.value.trim();
             this.fish.forEach(f => {
                 if (typedVal === f.word) {
@@ -129,14 +102,16 @@ class Game {
                     f.word = null;
                     this.cat.fishEaten += 1;
                     this.cat.eat = false;
-                    this.cat.draw();
                 };
             });
+            this.cat.draw();
             this.input.value = '';
             this.typeStart = 0;
 
-            if (this.cat.fishEaten % 10 === 0) {
+            if (this.cat.fishEaten % 12 === 0) {
                 this.cat.fat += 5;
+                // this.populateFishArray();
+                // this.addFish();
             };
         }
     }
@@ -145,20 +120,17 @@ class Game {
         if (e.button === 0) {
             this.canvas.removeEventListener('click', this.startGame);
             this.resetGame();
-            // clearInterval(window.startInterval);
-            // clearInterval(window.overInterval);
-            // this.canvas.className = 'game';
-            // requestAnimationFrame(this.render);
-            this.render();
+            this.gameLoop();
             this.input.disabled = false;
             this.input.style.display = 'block';
             this.input.focus();
         }
     }
 
-    // gameLoop() {
+    gameLoop() {
+        this.render();
 
-    // }
+    }
     // haev a game loop function that renders every second that you want frames to move
     // start game should call loop funciton, which calls render
 
@@ -171,30 +143,12 @@ class Game {
         this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
         this.canvas.addEventListener('click', this.input.focus());
         this.input.addEventListener('keydown', this.handleFish);
-        this.input.addEventListener('input', this.startTimer);
-
-        // let interval = 10;
-        // let now = Date.now();
-        // let delta = now - this.then;
-
+        
+        // this.fish = [];
         this.addFish();
 
         this.cat.drawFishEaten();
         this.cat.draw();
-
-        // if 
-
-        // this.fish.forEach(f => {
-        //     if (f.eaten === false) {
-        //         setInterval(f.draw(), 5000);
-        //         // f.draw(); //this is causing the fish to show on screen
-        //         // console.log(this.fish)
-        //         if (delta > interval) {
-        //             this.then = now - (delta % interval);
-        //             f.move();
-        //         }
-        //     }
-        // })
 
     }
 
