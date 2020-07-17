@@ -68,19 +68,19 @@ class Game {
             return this.fish;
 
         } else if (this.cat.fat === 5) {
-            if (this.fish.length < (this.cat.fat + 20)) {
+            if (this.fish.length < (this.cat.fat + 22)) {
                 this.fish.push(newFish);
             }
             return this.fish;
 
         } else if (this.cat.fat === 10) {
-            if (this.fish.length < (this.cat.fat + 30)) {
+            if (this.fish.length < (this.cat.fat + 34)) {
                 this.fish.push(newFish);
             }
             return this.fish;
 
         } else if (this.cat.fat === 15) {
-            if (this.fish.length < (this.cat.fat + 50)) {
+            if (this.fish.length < (this.cat.fat + 47)) {
                 this.fish.push(newFish);
             }
             return this.fish;
@@ -118,12 +118,13 @@ class Game {
                     f = null;
                     this.cat.fishEaten += 1;
                     if (this.cat.fishEaten === 10 
-                        || this.cat.fishEaten === 20
-                        || this.cat.fishEaten === 30
-                        || this.cat.fishEaten === 40) {
+                        || this.cat.fishEaten === 22
+                        || this.cat.fishEaten === 34
+                        || this.cat.fishEaten === 46) {
                         this.cat.fat += 5;
                     };
                     if (this.cat.fat === 20) {
+                        debugger
                         this.gameOver();
                     }
                     this.cat.draw();
@@ -164,32 +165,23 @@ class Game {
         this.input.addEventListener('keydown', this.handleFish);
 
         this.populateFishArray();
-        let temp = this.cat.fat;
-        debugger
         this.addFish();
-        debugger
-        if (temp !== this.cat.fat) {
-            debugger
-            this.addFish();
-        }
     
         this.cat.drawFishEaten();
         this.cat.draw();
-
-
-
     }
 
     gameOver() {
         this.canvas.removeEventListener('click', this.input.focus());
         this.input.removeEventListener('keydown', this.handleFish);
-        // this.input.removeEventListener('input', this.startTimer);
+
         this.input.value = '';
         this.input.disabled = true;
         this.input.style.display = 'none';
         
-        this.GameOver.endCounter
-        this.canvas.className = 'game-over-canvas';
+        // this.GameOver.endCounter
+        // this.canvas.className = 'game-over-canvas';
+        this.gameOverAnimate();
     }
 
     gameOverAnimate() {
