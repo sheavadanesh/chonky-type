@@ -26,44 +26,46 @@ class Cat {
         this.cat20Img.src = '../public/images/cat20.png';
     }
 
+    drawEating() {
+        if (this.fat === 0) {
+            this.ctx.drawImage(this.catEatingImg,
+                480, 190,
+                360, 250);
+        } else if (this.fat === 5) {
+            this.ctx.drawImage(this.cat5EatingImg,
+                480, 190,
+                360, 250);
+        } else if (this.fat === 10) {
+            this.ctx.drawImage(this.cat10EatingImg,
+                480, 190,
+                360, 250);
+        } else if (this.fat === 15) {
+            this.ctx.drawImage(this.cat15EatingImg,
+                480, 190,
+                360, 250);
+        }; 
+    }
+
     draw() {
-        if (this.eat) {
-            if (this.fat === 0) {
-                this.ctx.drawImage(this.catEatingImg, 
-                                    480, 240, 
-                                    360, 250);
-            } else if (this.fat === 5) {
-                this.ctx.drawImage(this.cat5EatingImg,
-                    480, 240,
-                    360, 250);
-            } else if (this.fat === 10) {
-                this.ctx.drawImage(this.cat10EatingImg,
-                    480, 240,
-                    360, 250);
-            } else if (this.fat === 15) {
-                this.ctx.drawImage(this.cat15EatingImg,
-                    480, 240,
-                    360, 250);
-            };
-        } else if (this.fat === 0){
+        if (this.fat === 0){
             this.ctx.drawImage(this.catImg,
-                                480, 240,
+                                480, 190,
                                 360, 250);
         } else if (this.fat === 5) {
             this.ctx.drawImage(this.cat5Img,
-                                480, 240,
+                                480, 190,
                                 360, 250);
         } else if (this.fat === 10) {
             this.ctx.drawImage(this.cat10Img,
-                                480, 240,
+                                480, 190,
                                 360, 250);
         } else if (this.fat === 15) {
             this.ctx.drawImage(this.cat15Img,
-                                480, 240,
+                                480, 190,
                                 360, 250);
         } else if (this.fat === 20) {
             this.ctx.drawImage(this.cat20Img,
-                                480, 240,
+                                480, 190,
                                 360, 250);
         };
     }
