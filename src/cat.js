@@ -15,56 +15,56 @@ class Cat {
         this.cat15Img = new Image();
         this.cat15EatingImg = new Image();
         this.cat20Img = new Image();
-        this.catImg.src = '';
-        this.catEatingImg.src = '';
-        this.cat5Img.src = '';
-        this.cat5EatingImg.src = '';
-        this.cat10Img.src = '';
-        this.cat10EatingImg.src = '';
-        this.cat15Img.src = '';
-        this.cat15EatingImg.src = '';
-        this.cat20Img.src = '';
+        this.catImg.src = '../public/images/cat.png';
+        this.catEatingImg.src = '../public/images/catEating.png';
+        this.cat5Img.src = '../public/images/cat5.png';
+        this.cat5EatingImg.src = '../public/images/cat5eating.png';
+        this.cat10Img.src = '../public/images/cat10.png';
+        this.cat10EatingImg.src = '../public/images/cat10eating.png';
+        this.cat15Img.src = '../public/images/cat15.png';
+        this.cat15EatingImg.src = '../public/images/cat15eating.png';
+        this.cat20Img.src = '../public/images/cat20.png';
     }
 
     draw() {
         if (this.eat) {
             if (this.fat === 0) {
                 this.ctx.drawImage(this.catEatingImg, 
-                                    200, 240, 
-                                    90, 150);
+                                    480, 240, 
+                                    360, 250);
             } else if (this.fat === 5) {
                 this.ctx.drawImage(this.cat5EatingImg,
-                    200, 240,
-                    90, 150);
+                    480, 240,
+                    360, 250);
             } else if (this.fat === 10) {
                 this.ctx.drawImage(this.cat10EatingImg,
-                    200, 240,
-                    90, 150);
+                    480, 240,
+                    360, 250);
             } else if (this.fat === 15) {
                 this.ctx.drawImage(this.cat15EatingImg,
-                    200, 240,
-                    90, 150);
+                    480, 240,
+                    360, 250);
             };
         } else if (this.fat === 0){
             this.ctx.drawImage(this.catImg,
-                                200, 240,
-                                90, 150);
+                                480, 240,
+                                360, 250);
         } else if (this.fat === 5) {
             this.ctx.drawImage(this.cat5Img,
-                200, 240,
-                90, 150);
+                                480, 240,
+                                360, 250);
         } else if (this.fat === 10) {
             this.ctx.drawImage(this.cat10Img,
-                200, 240,
-                90, 150);
+                                480, 240,
+                                360, 250);
         } else if (this.fat === 15) {
             this.ctx.drawImage(this.cat15Img,
-                200, 240,
-                90, 150);
+                                480, 240,
+                                360, 250);
         } else if (this.fat === 20) {
             this.ctx.drawImage(this.cat20Img,
-                200, 240,
-                90, 150);
+                                480, 240,
+                                360, 250);
         };
     }
 

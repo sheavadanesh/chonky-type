@@ -17,7 +17,6 @@ document.addEventListener('DOMContentLoaded', () => {
     let count = 0;
     function flashyText() {
         ctx.clearRect(345, 520, 110, 110);
-        // game.drawBackground();
         count ++;
         if (count % 2 === 1) {
             start.drawStart();
@@ -30,7 +29,4 @@ document.addEventListener('DOMContentLoaded', () => {
     input.style.display = 'none';
     window.startInterval = setInterval(flashyText, 900);
     
-    // if (canvas.className === 'start-canvas') {
-    //     // game.drawBackground();
-    // }
 })
