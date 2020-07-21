@@ -25,7 +25,7 @@ Chonky Type is a typing game made with pure Vanilla JavaScript. The objective of
 
 Upon hitting the start button on the homepage, the start screen renders a clear canvas upon which the player waits for a fish to appear from the far left side of the canvas. Each fish that appears on the screen is associated with a word that the player will need to type out on the input box on the bottom of the canvas. 
 
-The location of the fish on the canvas is randomly generated. Upon creation, each fish is assigned an "eaten" boolean property which is by default set to "false". When the player types out the word correctly, the 'eaten' property of that fish becomes "true" and disappears from the screen. This triggers a count that will show on the top right corner of the canvas, which shows how many words have been typed correctly. 
+The location of the fish on the canvas is randomly generated. Upon creation, each fish is assigned an "eaten" boolean property which is by default set to "false". When the player types out the word correctly, the "eaten" property of that fish becomes "true" and disappears from the screen. This triggers a count that will show on the top right corner of the canvas, which shows how many words have been typed correctly. 
 
 ## Levels
 
