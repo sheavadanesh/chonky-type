@@ -3,7 +3,7 @@ class Start {
         this.ctx = ctx;
         this.canvas = canvas;
         this.catImg = new Image();
-        this.catImg.src = '../public/images/cat.png';
+        this.catImg.src = '/images/cat.png';
     }
 
     drawStart() {

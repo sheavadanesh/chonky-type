@@ -10,8 +10,8 @@ class Fish {
 
         this.orangeFishImg = new Image();
         this.grayFishImg = new Image();
-        this.orangeFishImg.src = '../public/images/orange_fish.png';
-        this.grayFishImg.src = '../public/images/gray_fish.png';
+        this.orangeFishImg.src = '/images/orange_fish.png';
+        this.grayFishImg.src = '/images/gray_fish.png';
     }
 
     draw() {
