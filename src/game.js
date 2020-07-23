@@ -97,9 +97,7 @@ class Game {
                 // this.then = now - (delta % interval);
                 if (f.eaten === false) {
                     f.move();
-                    window.onload = function() {
-                        f.draw();
-                    }
+                    f.draw();
                     if (f.x >= 410) {
                         f.eaten = true;
                     }
@@ -129,9 +127,8 @@ class Game {
                         debugger
                         this.gameOver();
                     }
-                    window.onload = function() {
-                        this.cat.draw();
-                    }
+                    this.cat.draw();
+                    
                     this.input.value = '';
                     this.typeStart = 0;
                     // this.cat.eat = false;
@@ -171,10 +168,9 @@ class Game {
         this.populateFishArray();
         this.addFish();
 
-        window.onload = function() {
-            this.cat.drawFishEaten();
-            this.cat.draw();
-        }
+        this.cat.drawFishEaten();
+        this.cat.draw();
+        
     }
 
     gameOver() {

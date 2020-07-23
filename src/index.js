@@ -10,11 +10,9 @@ document.addEventListener('DOMContentLoaded', () => {
     const start = new Start(ctx, canvas);
     const game = new Game(page, ctx, canvas, input)
     
-    // window.onload = function() {
     start.drawTitle();
     start.drawHeaderMessage();
     start.drawCat();
-    // }
 
     let count = 0;
     function flashyText() {
