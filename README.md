@@ -1,6 +1,6 @@
 # Chonky Type
 
-View <a href=''>Chonky Type</a>
+View <a href='https://sheavadanesh.github.io/chonky-type/'>Chonky Type</a>
 
 # About Chonky Type
 
