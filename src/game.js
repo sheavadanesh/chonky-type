@@ -113,8 +113,6 @@ class Game {
             let typedVal = this.input.value.trim();
             this.fish.forEach(f => {
                 if (typedVal === f.word) {
-                    // this.cat.eat = true;
-                    // this.cat.drawEating();
                     f.eaten = true;
                     f.word = null;
                     f = null;
@@ -134,7 +132,7 @@ class Game {
                     }
                     this.input.value = '';
                     this.typeStart = 0;
-                    // this.cat.eat = false;
+
                 };
             });
         }
