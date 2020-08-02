@@ -14,6 +14,7 @@ Chonky Type is a typing game made with pure Vanilla JavaScript. The objective of
 * HTML5/Canvas
 * CSS
 * Webpack
+* GitHub
 
 # Wireframe
 
