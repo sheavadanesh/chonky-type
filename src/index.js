@@ -10,12 +10,12 @@ document.addEventListener('DOMContentLoaded', () => {
     const start = new Start(ctx, canvas);
     const game = new Game(page, ctx, canvas, input)
     
-    window.onload = function() {
+    setTimeout(() => {
         start.drawTitle();
         start.drawHeaderMessage();
-        start.drawCat();
-    }
-
+    }, 500)
+    start.drawCat();
+    
     let count = 0;
     function flashyText() {
         ctx.clearRect(345, 520, 110, 110);
@@ -25,7 +25,6 @@ document.addEventListener('DOMContentLoaded', () => {
         } else {
             null;
         }
-        if (count === 1000) clearInterval(timer);
         canvas.addEventListener('click', game.startGame);
     }
     input.style.display = 'none';

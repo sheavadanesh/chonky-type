@@ -15,15 +15,15 @@ class Cat {
         this.cat15Img = new Image();
         this.cat15EatingImg = new Image();
         this.cat20Img = new Image();
-        this.catImg.src = '/images/cat.png';
-        this.catEatingImg.src = '/images/catEating.png';
-        this.cat5Img.src = '/images/cat5.png';
-        this.cat5EatingImg.src = '/images/cat5eating.png';
-        this.cat10Img.src = '/images/cat10.png';
-        this.cat10EatingImg.src = '/images/cat10eating.png';
-        this.cat15Img.src = '/images/cat15.png';
-        this.cat15EatingImg.src = '/images/cat15eating.png';
-        this.cat20Img.src = '/images/cat20.png';
+        this.catImg.src = './dist/assets/cat.png';
+        this.catEatingImg.src = './dist/assets/catEating.png';
+        this.cat5Img.src = './dist/assets/cat5.png';
+        this.cat5EatingImg.src = './dist/assets/cat5eating.png';
+        this.cat10Img.src = './dist/assets/cat10.png';
+        this.cat10EatingImg.src = './dist/assets/cat10eating.png';
+        this.cat15Img.src = './dist/assets/cat15.png';
+        this.cat15EatingImg.src = './dist/assets/cat15eating.png';
+        this.cat20Img.src = './dist/assets/cat20.png';
     }
 
     drawEating() {
