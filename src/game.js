@@ -32,6 +32,9 @@ class Game {
         this.startGame = this.startGame.bind(this);
         this.render = this.render.bind(this);
         this.gameLoop = this.gameLoop.bind(this);
+        this.gameOverFunc = this.gameOverFunc.bind(this);
+        this.gameOverAnimate = this.gameOverAnimate.bind(this);
+        // this.slowIterate = this.slowIterate.bind(this);
         // this.addFishSet = this.addFishSet.bind(this);
 
     }
@@ -53,6 +56,7 @@ class Game {
     // }
 
     populateFishArray() {
+        debugger
         let x = 12;
         let y = Math.floor((Math.random() * 220) + 170);
         let colors = ['orange', 'gray'];
@@ -87,10 +91,32 @@ class Game {
         } 
     }
 
+    slowIterate(arr) {
+        debugger
+        if (arr.length === 0) {
+            return;
+        }
+        let f = arr[0];
+        if (delta > interval) {
+            if (f.eaten === false) {
+                f.move();
+                f.draw();
+                if (f.x >= 410) {
+                    f.eaten = true;
+                }
+            }
+        }
+        setTimeout(() => {
+            slowIterate(arr.slice(1));
+        }, 1000);
+    }
+
     addFish() {
         let interval = 100;
         let now = Date.now();
         let delta = now - this.then;
+        debugger
+        // this.slowIterate(this.fish);
 
         this.fish.forEach(f => {
             if (delta > interval) {
@@ -104,6 +130,21 @@ class Game {
                 }
             }
         })
+        // var interval = 1000; // how much time should the delay between two iterations be (in milliseconds)?
+        // this.fish.forEach(function (f, index) {
+        //     setTimeout(function () {
+        //         if (delta > interval) {
+        //         // this.then = now - (delta % interval);
+        //         if (f.eaten === false) {
+        //             f.move();
+        //             f.draw();
+        //             if (f.x >= 410) {
+        //                 f.eaten = true;
+        //             }
+        //         }
+        //     }
+        //     }, interval);
+        // });
     }
     
     handleFish(e) {
@@ -122,8 +163,7 @@ class Game {
                         this.cat.fat += 5;
                     };
                     if (this.cat.fat === 20) {
-                        debugger
-                        this.gameOver();
+                        this.gameOverFunc();
                     }
                     this.cat.draw();
                     
@@ -149,10 +189,30 @@ class Game {
     gameLoop() {
         this.render();
 
+        // haev a game loop function that renders every second that you want frames to move
+        // start game should call loop funciton, which calls render
     }
-    // haev a game loop function that renders every second that you want frames to move
-    // start game should call loop funciton, which calls render
 
+    gameOverFunc() {
+        this.canvas.removeEventListener('click', this.input.focus());
+        this.input.removeEventListener('keydown', this.handleFish);
+
+        this.input.value = '';
+        this.input.disabled = true;
+        this.input.style.display = 'none';
+
+        // this.GameOver.endCounter
+        // this.canvas.className = 'game-over-canvas';
+        this.gameOverAnimate();
+    }
+
+    gameOverAnimate() {
+        this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
+        this.gameOver.draw20Win();
+        this.gameOver.drawWinMessage();
+        this.gameOver.drawFishEaten(this.cat.fishEaten);
+        this.gameOver.drawPlayAgain();
+    }
 
     render() {
         // just be responsible for putting stuff on screen
@@ -163,33 +223,14 @@ class Game {
         this.canvas.addEventListener('click', this.input.focus());
         this.input.addEventListener('keydown', this.handleFish);
 
+        debugger
+
         this.populateFishArray();
         this.addFish();
 
         this.cat.drawFishEaten();
         this.cat.draw();
         
-    }
-
-    gameOver() {
-        this.canvas.removeEventListener('click', this.input.focus());
-        this.input.removeEventListener('keydown', this.handleFish);
-
-        this.input.value = '';
-        this.input.disabled = true;
-        this.input.style.display = 'none';
-        
-        // this.GameOver.endCounter
-        // this.canvas.className = 'game-over-canvas';
-        this.gameOverAnimate();
-    }
-
-    gameOverAnimate() {
-        this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
-        this.GameOver.draw20Win();
-        this.GameOver.drawWinMessage();
-        this.GameOver.drawFishEaten(this.cat.fishEaten);
-        this.GameOver.drawPlayAgain();
     }
 
 }

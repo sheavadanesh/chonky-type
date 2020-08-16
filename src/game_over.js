@@ -94,7 +94,7 @@ class GameOver {
             this.ctx.fillStyle = 'red';
             this.ctx.textAlign = 'center';
             this.ctx.font = 'bold 30px "Jua"';
-            this.fillText('Play Again', (this.canvas.width/2), 300);
+            this.ctx.fillText('Play Again', (this.canvas.width/2), 300);
             this.ctx.fill();
         this.ctx.closePath();
     }
