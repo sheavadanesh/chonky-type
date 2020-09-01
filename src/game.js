@@ -56,7 +56,6 @@ class Game {
     // }
 
     populateFishArray() {
-        debugger
         let x = 12;
         let y = Math.floor((Math.random() * 220) + 170);
         let colors = ['orange', 'gray'];
@@ -64,7 +63,6 @@ class Game {
         let word = this.dictionary.randomWord();
         let newFish = new Fish(this.ctx, this.canvas, word, x, y, color, this.eaten);
 
-        // let i = 0;
         if (this.cat.fat === 0) {
             if (this.fish.length < (this.cat.fat + 10)) {
                 this.fish.push(newFish);
@@ -92,7 +90,6 @@ class Game {
     }
 
     slowIterate(arr) {
-        debugger
         if (arr.length === 0) {
             return;
         }
@@ -188,9 +185,6 @@ class Game {
 
     gameLoop() {
         this.render();
-
-        // haev a game loop function that renders every second that you want frames to move
-        // start game should call loop funciton, which calls render
     }
 
     gameOverFunc() {
@@ -215,15 +209,11 @@ class Game {
     }
 
     render() {
-        // just be responsible for putting stuff on screen
-        // 
         requestAnimationFrame(this.render);
 
         this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
         this.canvas.addEventListener('click', this.input.focus());
         this.input.addEventListener('keydown', this.handleFish);
-
-        debugger
 
         this.populateFishArray();
         this.addFish();
