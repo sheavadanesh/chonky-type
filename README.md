@@ -6,7 +6,7 @@ View <a href='https://sheavadanesh.github.io/chonky-type/'>Chonky Type</a>
 
 Chonky Type is a typing game made with pure Vanilla JavaScript. The objective of the game is to type out words correctly, which allows the cat on screen to eat fish for every word typed. Players eventually win the game when the cat reaches a certain fatness level from eating fish!
 
-<img src='./public/images/homepage.png' width='700' height='550'>
+<img src='./public/images/homepage.png' width='700' height='450'>
 
 # Technologies
 
