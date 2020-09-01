@@ -40,6 +40,7 @@ class Game {
     }
 
     resetGame() {
+        
         this.fish = [];
         this.cat.fishEaten = 0;
         this.fishCount = 0;
@@ -56,6 +57,7 @@ class Game {
     // }
 
     populateFishArray() {
+        
         let x = 12;
         let y = Math.floor((Math.random() * 220) + 170);
         let colors = ['orange', 'gray'];
@@ -109,10 +111,11 @@ class Game {
     }
 
     addFish() {
+        
         let interval = 100;
         let now = Date.now();
         let delta = now - this.then;
-        debugger
+        
         // this.slowIterate(this.fish);
 
         this.fish.forEach(f => {
@@ -160,6 +163,7 @@ class Game {
                         this.cat.fat += 5;
                     };
                     if (this.cat.fat === 20) {
+                        debugger
                         this.gameOverFunc();
                     }
                     this.cat.draw();
@@ -173,6 +177,7 @@ class Game {
     }
 
     startGame(e) {
+        
         if (e.button === 0) {
             this.canvas.removeEventListener('click', this.startGame);
             this.resetGame();
@@ -184,10 +189,17 @@ class Game {
     }
 
     gameLoop() {
+        
         this.render();
     }
 
     gameOverFunc() {
+        this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
+        this.fish = [];
+        this.fishCount = 0;
+        this.count = 0;
+        this.cat.eat = false;
+        this.eaten = false;
         this.canvas.removeEventListener('click', this.input.focus());
         this.input.removeEventListener('keydown', this.handleFish);
 
@@ -197,11 +209,14 @@ class Game {
 
         // this.GameOver.endCounter
         // this.canvas.className = 'game-over-canvas';
+        debugger
         this.gameOverAnimate();
     }
 
     gameOverAnimate() {
+        debugger
         this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
+        
         this.gameOver.draw20Win();
         this.gameOver.drawWinMessage();
         this.gameOver.drawFishEaten(this.cat.fishEaten);
@@ -209,17 +224,23 @@ class Game {
     }
 
     render() {
+        
         requestAnimationFrame(this.render);
 
         this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
         this.canvas.addEventListener('click', this.input.focus());
         this.input.addEventListener('keydown', this.handleFish);
 
-        this.populateFishArray();
-        this.addFish();
+        
 
+        this.populateFishArray();
+        
+        this.addFish();
+        
         this.cat.drawFishEaten();
+        
         this.cat.draw();
+        
         
     }
 
