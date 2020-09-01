@@ -31,7 +31,6 @@ class Game {
         this.handleFish = this.handleFish.bind(this);
         this.startGame = this.startGame.bind(this);
         this.render = this.render.bind(this);
-        this.gameLoop = this.gameLoop.bind(this);
         this.gameOverFunc = this.gameOverFunc.bind(this);
         this.gameOverAnimate = this.gameOverAnimate.bind(this);
         // this.slowIterate = this.slowIterate.bind(this);
@@ -182,15 +181,11 @@ class Game {
         
         if (e.button === 0) {
             this.resetGame();
-            this.gameLoop();
+            this.render();
             this.input.disabled = false;
             this.input.style.display = 'block';
             this.input.focus();
         }
-    }
-
-    gameLoop() {
-        this.render();
     }
 
     gameOverFunc() {
@@ -202,7 +197,6 @@ class Game {
         this.eaten = false;
         // this.canvas.removeEventListener('click', this.input.focus());
         this.input.removeEventListener('keydown', this.handleFish);
-        this.canvas.removeEventListener('click', this.startGame);
 
         this.input.value = '';
         this.input.disabled = true;
@@ -226,21 +220,13 @@ class Game {
         requestAnimationFrame(this.render);
 
         this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
-        // this.canvas.addEventListener('click', this.input.focus());
         this.input.addEventListener('keydown', this.handleFish);
         this.canvas.removeEventListener('click', this.startGame);
 
-
-        
-
         this.populateFishArray();
-        
         this.addFish();
-        
         this.cat.drawFishEaten();
-        
         this.cat.draw();
-        
         
     }
 
