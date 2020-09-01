@@ -25,7 +25,6 @@ class Game {
         this.then = Date.now();
 
         this.resetGame = this.resetGame.bind(this);
-        // this.startTimer = this.startTimer.bind(this);
         this.populateFishArray = this.populateFishArray.bind(this);
         this.addFish = this.addFish.bind(this);
         this.handleFish = this.handleFish.bind(this);
@@ -33,13 +32,10 @@ class Game {
         this.render = this.render.bind(this);
         this.gameOverFunc = this.gameOverFunc.bind(this);
         this.gameOverAnimate = this.gameOverAnimate.bind(this);
-        // this.slowIterate = this.slowIterate.bind(this);
-        // this.addFishSet = this.addFishSet.bind(this);
 
     }
 
     resetGame() {
-        
         this.fish = [];
         this.cat.fishEaten = 0;
         this.fishCount = 0;
@@ -49,14 +45,8 @@ class Game {
         this.eaten = false;
     }
 
-    // startTimer(e) {
-    //     if (this.typeStart === 0 && e.target.value !== ' ') {
-    //         this.typeStart = Date.now();
-    //     }
-    // }
-
     populateFishArray() {
-        
+        // debugger
         let x = 12;
         let y = Math.floor((Math.random() * 220) + 170);
         let colors = ['orange', 'gray'];
@@ -90,33 +80,12 @@ class Game {
         } 
     }
 
-    slowIterate(arr) {
-        if (arr.length === 0) {
-            return;
-        }
-        let f = arr[0];
-        if (delta > interval) {
-            if (f.eaten === false) {
-                f.move();
-                f.draw();
-                if (f.x >= 410) {
-                    f.eaten = true;
-                }
-            }
-        }
-        setTimeout(() => {
-            slowIterate(arr.slice(1));
-        }, 1000);
-    }
-
     addFish() {
-        debugger
+        // debugger
         let interval = 100;
         let now = Date.now();
         let delta = now - this.then;
         
-        // this.slowIterate(this.fish);
-
         this.fish.forEach(f => {
             if (delta > interval) {
                 // this.then = now - (delta % interval);
@@ -129,22 +98,6 @@ class Game {
                 }
             }
         })
-        debugger
-        // var interval = 1000; // how much time should the delay between two iterations be (in milliseconds)?
-        // this.fish.forEach(function (f, index) {
-        //     setTimeout(function () {
-        //         if (delta > interval) {
-        //         // this.then = now - (delta % interval);
-        //         if (f.eaten === false) {
-        //             f.move();
-        //             f.draw();
-        //             if (f.x >= 410) {
-        //                 f.eaten = true;
-        //             }
-        //         }
-        //     }
-        //     }, interval);
-        // });
     }
     
     handleFish(e) {
@@ -224,11 +177,10 @@ class Game {
         this.input.addEventListener('keydown', this.handleFish);
         this.canvas.removeEventListener('click', this.startGame);
 
-        this.populateFishArray();
-        this.addFish();
         this.cat.drawFishEaten();
         this.cat.draw();
-        
+        this.populateFishArray();
+        this.addFish();
     }
 
 }
