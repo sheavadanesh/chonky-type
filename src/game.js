@@ -110,7 +110,7 @@ class Game {
     }
 
     addFish() {
-        
+        debugger
         let interval = 100;
         let now = Date.now();
         let delta = now - this.then;
@@ -129,6 +129,7 @@ class Game {
                 }
             }
         })
+        debugger
         // var interval = 1000; // how much time should the delay between two iterations be (in milliseconds)?
         // this.fish.forEach(function (f, index) {
         //     setTimeout(function () {
@@ -202,12 +203,12 @@ class Game {
         this.input.disabled = true;
         this.input.style.display = 'none';
 
-        debugger
+        // debugger
         this.gameOverAnimate();
     }
 
     gameOverAnimate() {
-        debugger
+        // debugger
         this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
         
         this.gameOver.draw20Win();

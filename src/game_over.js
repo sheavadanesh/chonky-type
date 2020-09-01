@@ -6,7 +6,7 @@ class GameOver {
 
     draw20Win() {
         this.ctx.clearRect(0, 0, 800, 600);
-        debugger
+        // debugger
         this.ctx.beginPath();
             this.ctx.fillStyle = 'black';
             this.ctx.font = 'bold 40px "Jua"';
@@ -62,7 +62,7 @@ class GameOver {
     }
 
     drawWinMessage() {
-        debugger
+        // debugger
         this.ctx.beginPath();
             this.ctx.fillStyle = 'black';
             this.ctx.font = '20px "Jua"';
@@ -83,7 +83,7 @@ class GameOver {
     }
 
     drawFishEaten(fishCount) {
-        debugger
+        // debugger
         this.ctx.beginPath();
             this.ctx.fillStyle = 'black';
             this.ctx.font = 'bold 20px "Jua"';
@@ -92,7 +92,7 @@ class GameOver {
     }
 
     drawPlayAgain() {
-        debugger
+        // debugger
         this.ctx.beginPath();
             this.ctx.fillStyle = 'red';
             this.ctx.textAlign = 'center';
