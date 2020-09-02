@@ -129,7 +129,9 @@ class Dictionary {
             "within", "without", "woman", "wonder", "word", "work", "worker",
             "world", "worry", "would", "write", "writer", "wrong", "yard", "yeah",
             "year", "yes", "yet", "you", "young", "your", "yourself",
-            "abode", "access"]
+            "abode", "access"];
+        
+        this.yPos = (220...390)
     };
 
     randomWord() {

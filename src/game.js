@@ -15,6 +15,7 @@ class Game {
         this.gameOver = new GameOver(ctx, canvas);
         
         this.fish = [];
+        this.fishPositions = [];
         this.fishCount = 0;
         this.count = 0;
         this.cat.fat = 0;
@@ -52,29 +53,38 @@ class Game {
         let colors = ['orange', 'gray'];
         let color = colors[Math.floor(Math.random() * 2)];
         let word = this.dictionary.randomWord();
+
         let newFish = new Fish(this.ctx, this.canvas, word, x, y, color, this.eaten);
 
         if (this.cat.fat === 0) {
             if (this.fish.length < (this.cat.fat + 10)) {
                 this.fish.push(newFish);
+            } else {
+                this.fishPositions = [];
             }
             return this.fish;
 
         } else if (this.cat.fat === 5) {
             if (this.fish.length < (this.cat.fat + 22)) {
                 this.fish.push(newFish);
+            } else {
+                this.fishPositions = [];
             }
             return this.fish;
 
         } else if (this.cat.fat === 10) {
             if (this.fish.length < (this.cat.fat + 34)) {
                 this.fish.push(newFish);
+            } else {
+                this.fishPositions = [];
             }
             return this.fish;
 
         } else if (this.cat.fat === 15) {
             if (this.fish.length < (this.cat.fat + 47)) {
                 this.fish.push(newFish);
+            } else {
+                this.fishPositions = [];
             }
             return this.fish;
         } 
@@ -179,8 +189,11 @@ class Game {
 
         this.cat.drawFishEaten();
         this.cat.draw();
+        
         this.populateFishArray();
-        this.addFish();
+        let addThem = this.addFish();
+        // this.addFish();
+        setInterval(addThem, 1000);
     }
 
 }
