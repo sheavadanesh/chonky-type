@@ -48,8 +48,9 @@ class Game {
     }
 
     checkPos(newPos, fishPos) {
+        debugger
         fishPos.forEach((pair) => {
-            debugger
+            // debugger
             if (newPos > pair[0] || newPos < pair[1]) {
                 return true;
             } else {
@@ -71,7 +72,7 @@ class Game {
         if (this.cat.fat === 0) {
             if (this.fish.length < (this.cat.fat + 10)) {
                 let temp = this.fishPositions;
-
+                debugger
                 if (!this.checkPos(newFish.y, temp)) {
                     debugger
                     this.fish.push(newFish);
