@@ -58,7 +58,10 @@ class Game {
 
         if (this.cat.fat === 0) {
             if (this.fish.length < (this.cat.fat + 10)) {
-                this.fish.push(newFish);
+                if (!this.fishPositions.includes([newFish.y, newFish.y + 50])) {
+                    this.fish.push(newFish);
+                    this.fishPositions.push([newFish.y, newFish.y + 50])
+                }
             } else {
                 this.fishPositions = [];
             }
@@ -66,7 +69,11 @@ class Game {
 
         } else if (this.cat.fat === 5) {
             if (this.fish.length < (this.cat.fat + 22)) {
-                this.fish.push(newFish);
+                // this.fish.push(newFish);
+                if (!this.fishPositions.includes([newFish.y, newFish.y + 50])) {
+                    this.fish.push(newFish);
+                    this.fishPositions.push([newFish.y, newFish.y + 50])
+                }
             } else {
                 this.fishPositions = [];
             }
@@ -74,7 +81,11 @@ class Game {
 
         } else if (this.cat.fat === 10) {
             if (this.fish.length < (this.cat.fat + 34)) {
-                this.fish.push(newFish);
+                // this.fish.push(newFish);
+                if (!this.fishPositions.includes([newFish.y, newFish.y + 50])) {
+                    this.fish.push(newFish);
+                    this.fishPositions.push([newFish.y, newFish.y + 50])
+                }
             } else {
                 this.fishPositions = [];
             }
@@ -82,7 +93,11 @@ class Game {
 
         } else if (this.cat.fat === 15) {
             if (this.fish.length < (this.cat.fat + 47)) {
-                this.fish.push(newFish);
+                // this.fish.push(newFish);
+                if (!this.fishPositions.includes([newFish.y, newFish.y + 50])) {
+                    this.fish.push(newFish);
+                    this.fishPositions.push([newFish.y, newFish.y + 50])
+                }
             } else {
                 this.fishPositions = [];
             }
