@@ -33,6 +33,7 @@ class Game {
         this.render = this.render.bind(this);
         this.gameOverFunc = this.gameOverFunc.bind(this);
         this.gameOverAnimate = this.gameOverAnimate.bind(this);
+        this.checkPos = this.checkPos.bind(this);
 
     }
 
@@ -44,6 +45,17 @@ class Game {
         this.cat.fat = 0;
         this.cat.eat = false;
         this.eaten = false;
+    }
+
+    checkPos(newPos, fishPos) {
+        fishPos.forEach((pair) => {
+            debugger
+            if (newPos > pair[0] || newPos < pair[1]) {
+                return true;
+            } else {
+                return false;
+            }
+        });
     }
 
     populateFishArray() {
@@ -58,49 +70,63 @@ class Game {
 
         if (this.cat.fat === 0) {
             if (this.fish.length < (this.cat.fat + 10)) {
-                if (!this.fishPositions.includes([newFish.y, newFish.y + 50])) {
+                let temp = this.fishPositions;
+
+                if (!this.checkPos(newFish.y, temp)) {
+                    debugger
                     this.fish.push(newFish);
-                    this.fishPositions.push([newFish.y, newFish.y + 50])
+                    this.fishPositions.push([newFish.y, newFish.y + 35])
                 }
+
             } else {
                 this.fishPositions = [];
             }
+
             return this.fish;
 
         } else if (this.cat.fat === 5) {
             if (this.fish.length < (this.cat.fat + 22)) {
-                // this.fish.push(newFish);
-                if (!this.fishPositions.includes([newFish.y, newFish.y + 50])) {
+                let temp = this.fishPositions;
+
+                if (!this.checkPos(newFish.y, temp)) {
                     this.fish.push(newFish);
                     this.fishPositions.push([newFish.y, newFish.y + 50])
                 }
+
             } else {
                 this.fishPositions = [];
             }
+
             return this.fish;
 
         } else if (this.cat.fat === 10) {
             if (this.fish.length < (this.cat.fat + 34)) {
-                // this.fish.push(newFish);
-                if (!this.fishPositions.includes([newFish.y, newFish.y + 50])) {
+                let temp = this.fishPositions;
+
+                if (!this.checkPos(newFish.y, temp)) {
                     this.fish.push(newFish);
                     this.fishPositions.push([newFish.y, newFish.y + 50])
                 }
+
             } else {
                 this.fishPositions = [];
             }
+
             return this.fish;
 
         } else if (this.cat.fat === 15) {
             if (this.fish.length < (this.cat.fat + 47)) {
-                // this.fish.push(newFish);
-                if (!this.fishPositions.includes([newFish.y, newFish.y + 50])) {
+                let temp = this.fishPositions;
+
+                if (!this.checkPos(newFish.y, temp)) {
                     this.fish.push(newFish);
                     this.fishPositions.push([newFish.y, newFish.y + 50])
                 }
+
             } else {
                 this.fishPositions = [];
             }
+
             return this.fish;
         } 
     }
